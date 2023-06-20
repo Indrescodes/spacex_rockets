@@ -1,48 +1,37 @@
 import React from 'react';
-
-interface Rocket {
-  id: number;
-  rocket_name: string;
-  diameter: {
-    meters: number;
-  };
-  height: {
-    meters: number;
-  };
-  mass: {
-    kg: number;
-  };
-  cost_per_launch: number;
-}
+import { ISpacexRockets } from '../../../shared/api/types';
 
 interface ITableProps {
-  rockets: Rocket[];
+  rockets: ISpacexRockets[];
 }
 
 const Table: React.FC<ITableProps> = ({ rockets }) => {
+  if (rockets.length === 0) {
+    return <div>Not found</div>;
+  }
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Rocket name</th>
-          <th>Diameter</th>
-          <th>Height</th>
-          <th>Mass</th>
-          <th>Cost per launch</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div>
+      <div>
+        <ul>
+          <li>Rocket name</li>
+          <li>Diameter</li>
+          <li>Height</li>
+          <li>Mass</li>
+          <li>Cost per launch</li>
+        </ul>
+      </div>
+      <div>
         {rockets.map((rocket) => (
-          <tr key={rocket.id}>
-            <td>{rocket.rocket_name}</td>
-            <td>{rocket.diameter.meters} meters</td>
-            <td>{rocket.height.meters} meters</td>
-            <td>{rocket.mass.kg} kg</td>
-            <td>${rocket.cost_per_launch.toLocaleString()}</td>
-          </tr>
+          <ul key={rocket.id}>
+            <li>{rocket.rocket_name}</li>
+            <li>{rocket.diameter.meters} m</li>
+            <li>{rocket.height.meters} m</li>
+            <li>{rocket.mass.kg} kg</li>
+            <li>${rocket.cost_per_launch.toLocaleString()}</li>
+          </ul>
         ))}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 };
 
