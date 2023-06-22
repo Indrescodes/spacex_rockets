@@ -1,10 +1,13 @@
-import './App.css';
+import { SearchTableContainer } from './App';
+import './App.ts';
 import SearchTable from './components/organisms/SearchTable';
 
 function App() {
   return (
     <>
-      <SearchTable rockets={[]} />
+      <SearchTableContainer>
+        <SearchTable rockets={[]} />
+      </SearchTableContainer>
     </>
   );
 }
