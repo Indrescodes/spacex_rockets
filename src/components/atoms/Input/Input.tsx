@@ -24,7 +24,7 @@ const Input: React.FC<IInputProps> = ({ value, onChange, onSearch }) => {
     try {
       const rockets = await API.getSpacexRockets();
       const filteredRockets = rockets.filter((rocket) =>
-          rocket.rocket_name.toLowerCase().includes(value.toLowerCase())
+        rocket.rocket_name.toLowerCase().includes(value.toLowerCase())
       );
       setResultCount(filteredRockets.length);
     } catch (error) {
@@ -39,27 +39,23 @@ const Input: React.FC<IInputProps> = ({ value, onChange, onSearch }) => {
     }
   };
 
-  const handleIconClick = () => {
-    onSearch();
-  };
-
   return (
-      <StyledInputWrapper>
-        <StyledSpaceXLogo>SpaceX rockets</StyledSpaceXLogo>
-        <StyledResultCount>
-          <span>{resultCount}</span> Results
-        </StyledResultCount>
+    <StyledInputWrapper>
+      <StyledSpaceXLogo>SpaceX rockets</StyledSpaceXLogo>
+      <StyledResultCount>
+        <span>{resultCount}</span> Results
+      </StyledResultCount>
 
-        <div className="StyledInputWithIcon">
-          <StyledInput
-              type="text"
-              value={value}
-              onChange={onChange}
-              onKeyPress={handleKeyPress}
-              placeholder="Search"
-          />
-        </div>
-      </StyledInputWrapper>
+      <div className='StyledInputWithIcon'>
+        <StyledInput
+          type='text'
+          value={value}
+          onChange={onChange}
+          onKeyPress={handleKeyPress}
+          placeholder='Search'
+        />
+      </div>
+    </StyledInputWrapper>
   );
 };
 

@@ -3,6 +3,7 @@ import Input from '../../atoms/Input/Input';
 import Table from '../../molecules/Table/Table';
 import { API } from '../../../shared/api';
 import { ISpacexRockets } from '../../../shared/api/types';
+import { StyledWrapper } from './style';
 
 interface ISearchTableProps {
   rockets: ISpacexRockets[];
@@ -40,14 +41,14 @@ const SearchTable: React.FC<ISearchTableProps> = () => {
   };
 
   return (
-    <div>
+    <StyledWrapper>
       <Input
         value={searchTerm}
         onChange={handleChange}
         onSearch={() => handleSearch(searchTerm)}
       />
       <Table rockets={filteredRockets} />
-    </div>
+    </StyledWrapper>
   );
 };
 
